@@ -1,6 +1,10 @@
 package L;
 
-import L.liskovSubstitution.*;
+import L.liskovSubstitution.LiskovViolation;
+import L.liskovSubstitution.shapes.FancyDirectLiskovViolationShape;
+import L.liskovSubstitution.shapes.FancyRectangle;
+import L.liskovSubstitution.shapes.FancySquare;
+import L.liskovSubstitution.shapes.FancyTriangle;
 
 public class LiskovDemonstrator {
     public static void main(String[] args) {

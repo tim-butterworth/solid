@@ -1,6 +1,8 @@
-package L.liskovSubstitution;
+package L.liskovSubstitution.shapes;
 
-public class FancyTriangle implements FancyShape {
+import L.liskovSubstitution.FancyShape;
+
+public class FancyRectangle implements FancyShape {
 
     private Integer height;
     private Integer width;
@@ -17,6 +19,6 @@ public class FancyTriangle implements FancyShape {
 
     @Override
     public Integer calculateArea() {
-        return height * width / 2;
+        return height * width;
     }
 }
