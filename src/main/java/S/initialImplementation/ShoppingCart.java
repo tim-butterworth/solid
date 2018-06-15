@@ -66,7 +66,7 @@ public class ShoppingCart {
 
 
         Item item = Optional.ofNullable(items)
-                .filter(list -> list.size() > 0)
+                .filter(list -> !list.isEmpty())
                 .map(list -> list.get(0))
                 .orElse(null);
 
