@@ -1,19 +1,27 @@
 import initialImplementation.InitialShoppingCart;
+import initialImplementation.ItemType;
 import initialImplementation.ShoppingCart;
+import solidPrinciples.O.openClosed.justRight.OpenClosedDiscountPolicy;
+import solidPrinciples.O.openClosed.justRight.OpenClosedShoppingCart;
+import solidPrinciples.O.openClosed.justRight.OpenClosedTaxPolicy;
 import solidPrinciples.S.singleResponsibility.SingleResponsibilityShoppingCart;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Demonstrator {
 
     public static void main(String[] args) {
         ShoppingCart initialShoppingCart = new InitialShoppingCart();
         ShoppingCart singleResponsibilityShoppingCart = new SingleResponsibilityShoppingCart();
+        ShoppingCart openClosedShoppingCart = getOpenClosedShoppingCart();
 
         List<ShoppingCart> shoppingCarts = Arrays.asList(
                 initialShoppingCart,
-                singleResponsibilityShoppingCart
+                singleResponsibilityShoppingCart,
+                openClosedShoppingCart
         );
 
         shoppingCarts.forEach(shoppingCart -> {
@@ -30,5 +38,24 @@ public class Demonstrator {
 
             System.out.println(shoppingCart.calculateBill());
         });
+    }
+
+    private static ShoppingCart getOpenClosedShoppingCart() {
+        Map<Long, Double> itemIdToDiscountMap = new HashMap<>();
+        itemIdToDiscountMap.put(3L, .85);
+
+        Map<ItemType, Double> itemTypeToTaxRate = new HashMap<>();
+        itemTypeToTaxRate.put(ItemType.ESSENTIAL, 1.0);
+        itemTypeToTaxRate.put(ItemType.JUST_RIGHT, 1.08);
+        itemTypeToTaxRate.put(ItemType.LUXURY, 1.15);
+
+        return new OpenClosedShoppingCart(
+                new OpenClosedDiscountPolicy(
+                        itemIdToDiscountMap
+                ),
+                new OpenClosedTaxPolicy(
+                        itemTypeToTaxRate
+                )
+        );
     }
 }
