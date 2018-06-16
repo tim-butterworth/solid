@@ -1,4 +1,4 @@
-package L.liskovSubstitution;
+package solidPrinciples.L.liskovSubstitution.shapesExample;
 
 public interface FancyShape {
     void setHeight(Integer height);

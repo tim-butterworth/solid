@@ -1,15 +1,12 @@
-package L.liskovSubstitution.shapes;
+package solidPrinciples.L.liskovSubstitution.shapesExample;
 
-import L.liskovSubstitution.FancyShape;
+public class FancyDirectLiskovViolationShape implements FancyShape {
 
-public class FancyRectangle implements FancyShape {
-
-    private Integer height;
     private Integer width;
 
     @Override
     public void setHeight(Integer height) {
-        this.height = height;
+        throw new RuntimeException("shouldn't have called this method...");
     }
 
     @Override
@@ -19,6 +16,6 @@ public class FancyRectangle implements FancyShape {
 
     @Override
     public Integer calculateArea() {
-        return height * width;
+        return 8 * width;
     }
 }

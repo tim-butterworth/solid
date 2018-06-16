@@ -1,10 +1,4 @@
-package L;
-
-import L.liskovSubstitution.LiskovViolation;
-import L.liskovSubstitution.shapes.FancyDirectLiskovViolationShape;
-import L.liskovSubstitution.shapes.FancyRectangle;
-import L.liskovSubstitution.shapes.FancySquare;
-import L.liskovSubstitution.shapes.FancyTriangle;
+package solidPrinciples.L.liskovSubstitution.shapesExample;
 
 public class LiskovDemonstrator {
     public static void main(String[] args) {

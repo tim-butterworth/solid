@@ -1,6 +1,4 @@
-package L.liskovSubstitution.shapes;
-
-import L.liskovSubstitution.FancyShape;
+package solidPrinciples.L.liskovSubstitution.shapesExample;
 
 public class FancySquare implements FancyShape {
     private Integer sideLength;

@@ -1,4 +1,4 @@
-package L.liskovSubstitution;
+package solidPrinciples.L.liskovSubstitution.shapesExample;
 
 public class LiskovViolation {
     public Integer getTheArea(FancyShape shape) {
