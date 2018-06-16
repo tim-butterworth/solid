@@ -6,10 +6,7 @@ import solidPrinciples.O.openClosed.justRight.OpenClosedShoppingCart;
 import solidPrinciples.O.openClosed.justRight.OpenClosedTaxPolicy;
 import solidPrinciples.S.singleResponsibility.SingleResponsibilityShoppingCart;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Demonstrator {
 
