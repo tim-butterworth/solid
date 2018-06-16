@@ -1,4 +1,4 @@
-package O.openClosed.tooOpen;
+package solidPrinciples.O.openClosed.tooOpen;
 
 import java.util.Map;
 

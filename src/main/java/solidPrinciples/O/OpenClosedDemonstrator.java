@@ -1,17 +1,19 @@
-package O;
+package solidPrinciples.O;
 
-import O.openClosed.tooOpen.Step;
-import O.openClosed.tooOpen.TooOpen;
-import O.openClosed.tooOpen.transitions.FinishTransition;
-import O.openClosed.tooOpen.transitions.GoToTransition;
-import O.openClosed.tooOpen.transitions.NextLineTransition;
+import solidPrinciples.O.openClosed.tooClosed.TooClosed;
+import solidPrinciples.O.openClosed.tooOpen.Step;
+import solidPrinciples.O.openClosed.tooOpen.TooOpen;
+import solidPrinciples.O.openClosed.tooOpen.transitions.FinishTransition;
+import solidPrinciples.O.openClosed.tooOpen.transitions.GoToTransition;
+import solidPrinciples.O.openClosed.tooOpen.transitions.NextLineTransition;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class OpenClosedDemonstrator {
     public static void main(String[] args) {
-        TooOpen tooOpen = new TooOpen();
+        TooClosed tooClosed = new TooClosed();
+        System.out.println(tooClosed.execute());
 
         Step[] steps = {
                 state -> {
@@ -38,13 +40,12 @@ public class OpenClosedDemonstrator {
                 FinishTransition::new
         };
 
-        String result = tooOpen.execute(
+        TooOpen tooOpen = new TooOpen();
+        System.out.println(tooOpen.<String>execute(
                 new HashMap<>(),
                 stateMap -> pretendNotToCast(stateMap, "index"),
                 steps
-        );
-
-        System.out.println(result);
+        ));
     }
 
     @SuppressWarnings("unchecked") // They will never know!

@@ -1,7 +1,7 @@
-package O.openClosed.tooOpen.transitions;
+package solidPrinciples.O.openClosed.tooOpen.transitions;
 
-import O.openClosed.tooOpen.Transition;
-import O.openClosed.tooOpen.TransitionType;
+import solidPrinciples.O.openClosed.tooOpen.Transition;
+import solidPrinciples.O.openClosed.tooOpen.TransitionType;
 
 import java.util.Map;
 

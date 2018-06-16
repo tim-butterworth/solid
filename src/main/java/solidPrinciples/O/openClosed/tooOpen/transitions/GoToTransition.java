@@ -1,4 +1,4 @@
-package O.openClosed.tooOpen.transitions;
+package solidPrinciples.O.openClosed.tooOpen.transitions;
 
 import java.util.Map;
 
