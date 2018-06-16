@@ -1,4 +1,4 @@
-package S.initialImplementation;
+package initialImplementation;
 
 import org.immutables.value.Value;
 

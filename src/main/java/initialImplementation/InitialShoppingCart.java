@@ -1,16 +1,14 @@
-package S.initialImplementation;
-
-import S.singleResponsibility.ImmutableItem;
+package initialImplementation;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ShoppingCart {
+public class InitialShoppingCart implements ShoppingCart {
 
     private final List<Item> itemList;
     private final Map<Long, List<Item>> warehouse;
 
-    public ShoppingCart() {
+    public InitialShoppingCart() {
         this.itemList = new ArrayList<>();
         this.warehouse = new HashMap<>();
 
@@ -61,32 +59,30 @@ public class ShoppingCart {
         warehouse.put(pagani_huayra.getId(), Collections.singletonList(pagani_huayra));
     }
 
+    @Override
     public CartAddResult addItem(Long itemId) {
         List<Item> items = warehouse.getOrDefault(itemId, Collections.emptyList());
 
-
-        Item item = Optional.ofNullable(items)
+        Optional<Item> optionalItem = Optional.ofNullable(items)
                 .filter(list -> !list.isEmpty())
-                .map(list -> list.get(0))
-                .orElse(null);
+                .map(list -> list.get(0));
 
-        Optional.ofNullable(item)
-                .ifPresent(i -> {
-                    int updatedSize = items.size() - 1;
+        optionalItem.ifPresent(item -> {
+            List<Item> updatedList = items.stream()
+                    .limit(items.size() - 1)
+                    .collect(Collectors.toList());
 
-                    List<Item> updatedList = items.stream()
-                            .limit(updatedSize)
-                            .collect(Collectors.toList());
+            warehouse.put(itemId, updatedList);
 
-                    warehouse.put(itemId, updatedList);
-                    itemList.add(i);
-                });
+            itemList.add(item);
+        });
 
-        return Optional.ofNullable(item)
+        return optionalItem
                 .map(i -> CartAddResult.SUCCESS)
                 .orElse(CartAddResult.FAILURE);
     }
 
+    @Override
     public Double calculateBill() {
         Double total = 0D;
 
@@ -103,13 +99,13 @@ public class ShoppingCart {
                 taxFactor = 1.15;
             }
 
-            Double discountRate = 0.0;
+            Double discountRate = 1.0;
             if (item.getId() == 3L) {
-                discountRate = .15;
+                discountRate = .85;
             }
 
             Double price = item.getPrice();
-            total = total - (price * discountRate) + price * taxFactor;
+            total = total + (price * discountRate) * taxFactor;
         }
 
         return total;
