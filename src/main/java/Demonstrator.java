@@ -1,6 +1,8 @@
 import initialImplementation.InitialShoppingCart;
 import initialImplementation.ItemType;
 import initialImplementation.ShoppingCart;
+import solidPrinciples.D.dependencyInversion.containers.DifferentImplementationShoppingCartFactory;
+import solidPrinciples.D.dependencyInversion.containers.InMemoryShoppingCartFactory;
 import solidPrinciples.O.openClosed.justRight.OpenClosedDiscountPolicy;
 import solidPrinciples.O.openClosed.justRight.OpenClosedShoppingCart;
 import solidPrinciples.O.openClosed.justRight.OpenClosedTaxPolicy;
@@ -18,7 +20,9 @@ public class Demonstrator {
         List<ShoppingCart> shoppingCarts = Arrays.asList(
                 initialShoppingCart,
                 singleResponsibilityShoppingCart,
-                openClosedShoppingCart
+                openClosedShoppingCart,
+                new InMemoryShoppingCartFactory().getInstance(),
+                new DifferentImplementationShoppingCartFactory().getInstance()
         );
 
         shoppingCarts.forEach(shoppingCart -> {
