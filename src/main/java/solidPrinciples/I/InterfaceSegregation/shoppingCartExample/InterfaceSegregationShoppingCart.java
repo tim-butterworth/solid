@@ -1,6 +1,8 @@
 package solidPrinciples.I.InterfaceSegregation.shoppingCartExample;
 
-import initialImplementation.*;
+import initialImplementation.CartAddResult;
+import initialImplementation.Item;
+import initialImplementation.ShoppingCart;
 
 import java.util.ArrayList;
 import java.util.List;

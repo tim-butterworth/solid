@@ -3,10 +3,11 @@ package solidPrinciples.O.openClosed.justRight;
 import initialImplementation.CartAddResult;
 import initialImplementation.Item;
 import initialImplementation.ShoppingCart;
+import solidPrinciples.S.singleResponsibility.Warehouse;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import solidPrinciples.S.singleResponsibility.Warehouse;
 
 public class OpenClosedShoppingCart implements ShoppingCart {
     private final List<Item> itemList;

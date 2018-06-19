@@ -4,7 +4,9 @@ import initialImplementation.CartAddResult;
 import initialImplementation.Item;
 import initialImplementation.ShoppingCart;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class SingleResponsibilityShoppingCart implements ShoppingCart {
 
