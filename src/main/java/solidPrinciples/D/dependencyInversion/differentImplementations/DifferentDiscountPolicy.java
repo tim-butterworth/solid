@@ -1,11 +1,10 @@
 package solidPrinciples.D.dependencyInversion.differentImplementations;
 
-import initialImplementation.Item;
 import solidPrinciples.D.dependencyInversion.core.DiscountPolicy;
 
-public class BetterDiscountPolicy implements DiscountPolicy {
+public class DifferentDiscountPolicy implements DiscountPolicy {
     @Override
-    public Double getDiscountRate(Item item) {
+    public Double getDiscountRate(Long id) {
         return null;
     }
 }

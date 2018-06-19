@@ -1,13 +1,11 @@
 package solidPrinciples.S.singleResponsibility;
 
-import initialImplementation.Item;
 import initialImplementation.ItemType;
 
 public class TaxPolicy {
-    public Double getTaxRate(Item item) {
+    public Double getTaxRate(ItemType itemType) {
         Double taxFactor = 1.0;
 
-        ItemType itemType = item.getType();
         if (itemType == ItemType.ESSENTIAL) {
             taxFactor = 1.0;
         }

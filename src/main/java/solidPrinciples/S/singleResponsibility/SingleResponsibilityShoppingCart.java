@@ -37,7 +37,7 @@ public class SingleResponsibilityShoppingCart implements ShoppingCart {
 
         for (Item item : itemList) {
             Double price = item.getPrice();
-            total = total + ((price * discountPolicy.getDiscountRate(item)) * taxPolicy.getTaxRate(item));
+            total = total + ((price * discountPolicy.getDiscountRate(item.getId())) * taxPolicy.getTaxRate(item.getType()));
         }
 
         return total;

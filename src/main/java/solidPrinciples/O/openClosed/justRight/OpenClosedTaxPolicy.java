@@ -1,6 +1,5 @@
 package solidPrinciples.O.openClosed.justRight;
 
-import initialImplementation.Item;
 import initialImplementation.ItemType;
 
 import java.util.Map;
@@ -13,7 +12,7 @@ public class OpenClosedTaxPolicy {
         this.itemTypeToTaxRate = itemTypeToTaxRate;
     }
 
-    public Double getTaxRate(Item item) {
-        return itemTypeToTaxRate.getOrDefault(item.getType() , 1.0);
+    public Double getTaxRate(ItemType type) {
+        return itemTypeToTaxRate.getOrDefault(type, 1.0);
     }
 }

@@ -1,7 +1,5 @@
 package solidPrinciples.O.openClosed.justRight;
 
-import initialImplementation.Item;
-
 import java.util.Map;
 
 public class OpenClosedDiscountPolicy {
@@ -12,7 +10,7 @@ public class OpenClosedDiscountPolicy {
         this.discountByItemId = discountByItemId;
     }
 
-    public Double getDiscountRate(Item item) {
-        return discountByItemId.getOrDefault(item.getId(), 1.0);
+    public Double getDiscountRate(Long id) {
+        return discountByItemId.getOrDefault(id, 1.0);
     }
 }

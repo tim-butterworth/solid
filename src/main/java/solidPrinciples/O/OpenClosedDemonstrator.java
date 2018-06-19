@@ -12,8 +12,11 @@ import java.util.Map;
 
 public class OpenClosedDemonstrator {
     public static void main(String[] args) {
+
         TooClosed tooClosed = new TooClosed();
         System.out.println(tooClosed.execute());
+
+
 
         Step[] steps = {
                 state -> {

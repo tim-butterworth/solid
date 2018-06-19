@@ -5,7 +5,7 @@ import solidPrinciples.D.dependencyInversion.core.Warehouse;
 
 import java.util.Optional;
 
-public class BetterWarehouse implements Warehouse {
+public class DifferentWarehouse implements Warehouse {
     @Override
     public Optional<Item> getItem(Long itemId) {
         return Optional.empty();
