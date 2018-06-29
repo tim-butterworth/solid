@@ -22,6 +22,8 @@ repositories {
 }
 
 dependencies {
+    compile 'com.h2database:h2:1.4.197'
+
     compileOnly 'org.immutables:value:2.5.5'
     apt 'org.immutables:value:2.5.5'
 

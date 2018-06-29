@@ -3,6 +3,8 @@ package solidPrinciples.I.InterfaceSegregation.shoppingCartExample;
 import initialImplementation.CartAddResult;
 import initialImplementation.Item;
 import initialImplementation.ShoppingCart;
+import solidPrinciples.O.openClosed.justRight.OpenClosedDiscountPolicy;
+import solidPrinciples.O.openClosed.justRight.OpenClosedTaxPolicy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +14,18 @@ public class InterfaceSegregationShoppingCart implements ShoppingCart {
 
     private final List<Item> itemList;
     private final ReadWarehouse warehouse;
-    private final DiscountPolicy discountPolicy;
-    private final TaxPolicy taxPolicy;
+    private final OpenClosedDiscountPolicy discountPolicy;
+    private final OpenClosedTaxPolicy taxPolicy;
 
-    public InterfaceSegregationShoppingCart() {
+    public InterfaceSegregationShoppingCart(
+            OpenClosedDiscountPolicy discountPolicy,
+            OpenClosedTaxPolicy taxPolicy,
+            ReadWarehouse warehouse
+    ) {
+        this.discountPolicy = discountPolicy;
+        this.taxPolicy = taxPolicy;
+        this.warehouse = warehouse;
         itemList = new ArrayList<>();
-        warehouse = new FullyFeaturedWarehouse();
-        discountPolicy = new DiscountPolicy();
-        taxPolicy = new TaxPolicy();
     }
 
     @Override

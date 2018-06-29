@@ -3,7 +3,6 @@ package solidPrinciples.O.openClosed.justRight;
 import initialImplementation.CartAddResult;
 import initialImplementation.Item;
 import initialImplementation.ShoppingCart;
-import solidPrinciples.S.singleResponsibility.Warehouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +10,17 @@ import java.util.Optional;
 
 public class OpenClosedShoppingCart implements ShoppingCart {
     private final List<Item> itemList;
-    private final Warehouse warehouse;
+    private final OpenClosedWarehouse warehouse;
     private final OpenClosedDiscountPolicy discountPolicy;
     private final OpenClosedTaxPolicy taxPolicy;
 
     public OpenClosedShoppingCart(
             OpenClosedDiscountPolicy discountPolicy,
-            OpenClosedTaxPolicy taxPolicy
+            OpenClosedTaxPolicy taxPolicy,
+            OpenClosedWarehouse warehouse
     ) {
+        this.warehouse = warehouse;
         itemList = new ArrayList<>();
-        warehouse = new Warehouse();
         this.discountPolicy = discountPolicy;
         this.taxPolicy = taxPolicy;
     }

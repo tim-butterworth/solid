@@ -1,18 +1,20 @@
-package solidPrinciples.I.InterfaceSegregation.shoppingCartExample;
+package solidPrinciples.O.openClosed.justRight;
 
 import initialImplementation.Item;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class FullyFeaturedWarehouse implements ReadWriteWarehouse {
+public class OpenClosedWarehouse {
     private final Map<Long, List<Item>> warehouse;
 
-    public FullyFeaturedWarehouse() {
-        this.warehouse = new HashMap<>();
+    public OpenClosedWarehouse(Map<Long, List<Item>> itemList) {
+        this.warehouse = itemList;
     }
 
-    @Override
     public Optional<Item> getItem(Long itemId) {
         List<Item> items = warehouse.getOrDefault(itemId, Collections.emptyList());
 
@@ -29,15 +31,5 @@ public class FullyFeaturedWarehouse implements ReadWriteWarehouse {
         });
 
         return optionalItem;
-    }
-
-    @Override
-    public void addItem(Item item) {
-        List<Item> existingItems = warehouse.getOrDefault(item.getId(), Collections.emptyList());
-
-        List<Item> items = new ArrayList<>(existingItems);
-        items.add(item);
-
-        warehouse.put(item.getId(), items);
     }
 }
