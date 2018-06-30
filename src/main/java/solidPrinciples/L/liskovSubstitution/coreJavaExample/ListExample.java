@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CoreJavaLiskovViolationExample {
+public class ListExample {
     public static void main(String[] args) {
         String[] entries = new String[]{"one", "two", "three"};
 

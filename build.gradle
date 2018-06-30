@@ -23,6 +23,7 @@ repositories {
 
 dependencies {
     compile 'com.h2database:h2:1.4.197'
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.11.v20180605'
 
     compileOnly 'org.immutables:value:2.5.5'
     apt 'org.immutables:value:2.5.5'
