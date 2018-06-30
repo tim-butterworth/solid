@@ -18,8 +18,12 @@ public class DifferentWarehouse implements Warehouse {
 
     @Override
     public Optional<Item> getItem(Long itemId) {
-        repo.findByNAME("SOUP");
-        return repo.findByITEM_ID(itemId).map(this::convertToItem);
+//        repo.findByNAME("SOUP");
+        Optional<DatabaseDIItem> optionalItem = repo.findByITEM_ID(itemId);
+
+        optionalItem.ifPresent(item -> repo.deleteById(item.getId()));
+
+        return optionalItem.map(this::convertToItem);
     }
 
     private Item convertToItem(DatabaseDIItem item) {

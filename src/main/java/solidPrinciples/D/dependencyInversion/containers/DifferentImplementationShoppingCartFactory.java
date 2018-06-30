@@ -37,18 +37,52 @@ public class DifferentImplementationShoppingCartFactory {
     }
 
     private void populateItems(Repo<DatabaseDIItem, Long> itemRepo) {
-        ImmutableDIItem build = ImmutableDIItem.builder()
+        ImmutableDIItem soup = ImmutableDIItem.builder()
                 .description("best description")
                 .itemId(1L)
                 .name("Soup")
-                .price(105D)
+                .price(.99D)
                 .type(ItemType.ESSENTIAL)
                 .build();
 
-        itemRepo.save(getItem(build));
-        itemRepo.save(getItem(build));
-        itemRepo.save(getItem(build));
-        itemRepo.save(getItem(build));
+        ImmutableDIItem tea = ImmutableDIItem.builder()
+                .description("Tasty tasty tea")
+                .itemId(2L)
+                .name("Box of Green Tea")
+                .price(10D)
+                .type(ItemType.JUST_RIGHT)
+                .build();
+
+        ImmutableDIItem videoGameConsole = ImmutableDIItem.builder()
+                .description("Latest and greatest")
+                .name("Super great game machine!!!")
+                .type(ItemType.LUXURY)
+                .price(300D)
+                .itemId(3L)
+                .build();
+
+        ImmutableDIItem pagani_huayra = ImmutableDIItem.builder()
+                .description("So fancy so fast")
+                .name("pagani huayra")
+                .type(ItemType.LUXURY)
+                .price(1400000D)
+                .itemId(4L)
+                .build();
+
+        itemRepo.save(getItem(soup));
+        itemRepo.save(getItem(soup));
+        itemRepo.save(getItem(soup));
+
+        itemRepo.save(getItem(tea));
+        itemRepo.save(getItem(tea));
+        itemRepo.save(getItem(tea));
+        itemRepo.save(getItem(tea));
+        itemRepo.save(getItem(tea));
+
+        itemRepo.save(getItem(videoGameConsole));
+        itemRepo.save(getItem(videoGameConsole));
+
+        itemRepo.save(getItem(pagani_huayra));
     }
 
     private DatabaseDIItem getItem(ImmutableDIItem immutableItem) {
@@ -63,15 +97,11 @@ public class DifferentImplementationShoppingCartFactory {
     }
 
     private void populateDiscounts(Repo<DatabaseDiscount, Long> discountRepo) {
-        discountRepo.save(getDiscount(.85, 3L));
-    }
-
-    private DatabaseDiscount getDiscount(double discountRate, long itemId) {
         DatabaseDiscount databaseDiscount = new DatabaseDiscount();
-        databaseDiscount.setDiscountRate(discountRate);
-        databaseDiscount.setItemId(itemId);
+        databaseDiscount.setDiscountRate(.85);
+        databaseDiscount.setItemId(3L);
 
-        return databaseDiscount;
+        discountRepo.save(databaseDiscount);
     }
 
     private void populateTaxes(Repo<DatabaseTax, Long> taxRepo) {

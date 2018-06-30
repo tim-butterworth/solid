@@ -51,8 +51,22 @@ public class RepoInvocationHandler<T, I> implements InvocationHandler {
             String query = findByColumnNameQuery(findByColumnName, args[0], databaseTableModel);
             return singleResultHandler(query);
         }
+        if ("deleteById".equals(methodName)) {
+            String query = deleteByIdQuery((I) args[0], databaseTableModel);
+            if(connectionWrapper.execute(query)) return PersistanceResult.SUCCESS;
+            else return PersistanceResult.FAILURE;
+        }
 
         throw new RuntimeException("Not implemented " + methodName);
+    }
+
+    private String deleteByIdQuery(I id, DatabaseTableModel<T> databaseTableModel) {
+        return String.format(
+                "DELETE from %s where %s = %s",
+                databaseTableModel.getTableName(),
+                databaseTableModel.getIDColumn().getColumnName(),
+                toH2Value(id)
+        );
     }
 
     private String findByColumnNameQuery(String columnName, Object arg, DatabaseTableModel<T> databaseTableModel) {
@@ -114,11 +128,9 @@ public class RepoInvocationHandler<T, I> implements InvocationHandler {
     }
 
     private String findByIdQuery(I id, DatabaseTableModel databaseTableModel) {
-        ColumnEntry idColumn = databaseTableModel.getIDColumn();
-
         return String.format("SELECT * from %s where %s = %s",
                 databaseTableModel.getTableName(),
-                idColumn.getColumnName(),
+                databaseTableModel.getIDColumn().getColumnName(),
                 toH2Value(id)
         );
     }
