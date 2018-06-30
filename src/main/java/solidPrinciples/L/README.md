@@ -1,0 +1,3 @@
+## Liskov Substitution
+
+Liskov Substitution is about not doing weird things or more specifically, to follow Liskov Substitution a subclass should be substitutable for its superclass everywhere in a program and the program should still be “correct” for certain meanings of correct.  This might be more clear with some examples of violations.  Java is an amazing technological feat but it also has a bunch of mistakes and thanks to its success and focus on backwards compatibility many of those mistakes will never go away and we can learn from them.  We don’t have to look any further than core Java for violations of Liskov Substitution.
