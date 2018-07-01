@@ -12,18 +12,12 @@ public class DependencyInversionShoppingCart implements ShoppingCart {
 
     private final List<Item> itemList;
     private final Warehouse warehouse;
-    private final DiscountPolicy discountPolicy;
-    private final TaxPolicy taxPolicy;
+    private final Pricing pricing;
 
-    public DependencyInversionShoppingCart(
-            Warehouse warehouse,
-            DiscountPolicy discountPolicy,
-            TaxPolicy taxPolicy
-    ) {
+    public DependencyInversionShoppingCart(Warehouse warehouse, Pricing pricing) {
         itemList = new ArrayList<>();
+        this.pricing = pricing;
         this.warehouse = warehouse;
-        this.discountPolicy = discountPolicy;
-        this.taxPolicy = taxPolicy;
     }
 
     @Override
@@ -39,14 +33,8 @@ public class DependencyInversionShoppingCart implements ShoppingCart {
 
     @Override
     public Double calculateBill() {
-        Double total = 0D;
-
-        for (Item item : itemList) {
-            Double price = item.getPrice();
-            total = total + ((price * discountPolicy.getDiscountRate(item.getId())) * taxPolicy.getTaxRate(item.getType()));
-        }
-
-        return total;
+        return itemList.stream()
+                .mapToDouble(pricing::getItemPrice)
+                .sum();
     }
-
 }

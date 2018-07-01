@@ -3,6 +3,7 @@ package solidPrinciples.S.singleResponsibility;
 import initialImplementation.ItemType;
 
 public class TaxPolicy {
+
     public Double getTaxRate(ItemType itemType) {
         Double taxFactor = 1.0;
 
@@ -16,4 +17,5 @@ public class TaxPolicy {
         }
         return taxFactor;
     }
+
 }

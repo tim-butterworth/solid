@@ -12,14 +12,12 @@ public class SingleResponsibilityShoppingCart implements ShoppingCart {
 
     private final List<Item> itemList;
     private final Warehouse warehouse;
-    private final DiscountPolicy discountPolicy;
-    private final TaxPolicy taxPolicy;
+    private final Pricing pricing;
 
     public SingleResponsibilityShoppingCart() {
         itemList = new ArrayList<>();
         warehouse = new Warehouse();
-        discountPolicy = new DiscountPolicy();
-        taxPolicy = new TaxPolicy();
+        pricing = new Pricing();
     }
 
     @Override
@@ -35,14 +33,9 @@ public class SingleResponsibilityShoppingCart implements ShoppingCart {
 
     @Override
     public Double calculateBill() {
-        Double total = 0D;
-
-        for (Item item : itemList) {
-            Double price = item.getPrice();
-            total = total + ((price * discountPolicy.getDiscountRate(item.getId())) * taxPolicy.getTaxRate(item.getType()));
-        }
-
-        return total;
+        return itemList.stream()
+                .mapToDouble(pricing::getItemPrice)
+                .sum();
     }
 
 }

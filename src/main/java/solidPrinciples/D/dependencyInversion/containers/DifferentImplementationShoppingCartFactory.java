@@ -4,6 +4,7 @@ import initialImplementation.ItemType;
 import initialImplementation.ShoppingCart;
 import solidPrinciples.D.dependencyInversion.core.DependencyInversionShoppingCart;
 import solidPrinciples.D.dependencyInversion.differentImplementations.DifferentDiscountPolicy;
+import solidPrinciples.D.dependencyInversion.differentImplementations.DifferentPricing;
 import solidPrinciples.D.dependencyInversion.differentImplementations.DifferentTaxPolicy;
 import solidPrinciples.D.dependencyInversion.differentImplementations.DifferentWarehouse;
 import solidPrinciples.D.dependencyInversion.differentImplementations.database.discounts.DatabaseDiscount;
@@ -31,8 +32,10 @@ public class DifferentImplementationShoppingCartFactory {
 
         return new DependencyInversionShoppingCart(
                 new DifferentWarehouse(itemRepo),
-                new DifferentDiscountPolicy(discountRepo),
-                new DifferentTaxPolicy(taxRepo)
+                new DifferentPricing(
+                        new DifferentTaxPolicy(taxRepo),
+                        new DifferentDiscountPolicy(discountRepo)
+                )
         );
     }
 

@@ -9,20 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 public class OpenClosedShoppingCart implements ShoppingCart {
+
     private final List<Item> itemList;
+    private final OpenClosedPricing openClosedPricing;
     private final OpenClosedWarehouse warehouse;
-    private final OpenClosedDiscountPolicy discountPolicy;
-    private final OpenClosedTaxPolicy taxPolicy;
 
     public OpenClosedShoppingCart(
-            OpenClosedDiscountPolicy discountPolicy,
-            OpenClosedTaxPolicy taxPolicy,
+            OpenClosedPricing openClosedPricing,
             OpenClosedWarehouse warehouse
     ) {
-        this.warehouse = warehouse;
         itemList = new ArrayList<>();
-        this.discountPolicy = discountPolicy;
-        this.taxPolicy = taxPolicy;
+        this.openClosedPricing = openClosedPricing;
+        this.warehouse = warehouse;
     }
 
     @Override
@@ -38,13 +36,9 @@ public class OpenClosedShoppingCart implements ShoppingCart {
 
     @Override
     public Double calculateBill() {
-        Double total = 0D;
-
-        for (Item item : itemList) {
-            Double price = item.getPrice();
-            total = total + ((price * discountPolicy.getDiscountRate(item.getId())) * taxPolicy.getTaxRate(item.getType()));
-        }
-
-        return total;
+        return itemList.stream()
+                .mapToDouble(openClosedPricing::getItemPrice)
+                .sum();
     }
+
 }

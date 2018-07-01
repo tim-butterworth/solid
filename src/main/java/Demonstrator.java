@@ -3,10 +3,7 @@ import solidPrinciples.D.dependencyInversion.containers.DifferentImplementationS
 import solidPrinciples.D.dependencyInversion.containers.InMemoryShoppingCartFactory;
 import solidPrinciples.I.InterfaceSegregation.shoppingCartExample.FullyFeaturedWarehouse;
 import solidPrinciples.I.InterfaceSegregation.shoppingCartExample.InterfaceSegregationShoppingCart;
-import solidPrinciples.O.openClosed.justRight.OpenClosedDiscountPolicy;
-import solidPrinciples.O.openClosed.justRight.OpenClosedShoppingCart;
-import solidPrinciples.O.openClosed.justRight.OpenClosedTaxPolicy;
-import solidPrinciples.O.openClosed.justRight.OpenClosedWarehouse;
+import solidPrinciples.O.openClosed.justRight.*;
 import solidPrinciples.S.singleResponsibility.SingleResponsibilityShoppingCart;
 
 import java.util.*;
@@ -66,7 +63,13 @@ public class Demonstrator {
         Map<Long, List<Item>> map = getWarehouseItems();
         OpenClosedWarehouse warehouse = new OpenClosedWarehouse(map);
 
-        return new OpenClosedShoppingCart(discountPolicy, taxPolicy, warehouse);
+        return new OpenClosedShoppingCart(
+                new OpenClosedPricing(
+                        discountPolicy,
+                        taxPolicy
+                ),
+                warehouse
+        );
     }
 
     private static OpenClosedTaxPolicy getOpenClosedTaxPolicy() {

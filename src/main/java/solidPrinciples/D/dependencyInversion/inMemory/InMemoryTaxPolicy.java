@@ -1,10 +1,8 @@
 package solidPrinciples.D.dependencyInversion.inMemory;
 
 import initialImplementation.ItemType;
-import solidPrinciples.D.dependencyInversion.core.TaxPolicy;
 
-public class InMemoryTaxPolicy implements TaxPolicy {
-    @Override
+public class InMemoryTaxPolicy {
     public Double getTaxRate(ItemType itemType) {
         Double taxFactor = 1.0;
 
