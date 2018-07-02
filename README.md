@@ -24,6 +24,6 @@ stands for:
 
 [Dependency Inversion](src/main/java/solidPrinciples/D/README.md)
 
-Credit for the acronym probably goes to Uncle Bob Martin who is not my uncle or probably yours either, but he is a big name in the land of Agile and particularly the subset which is Code Craftsmanship.  He has a bunch of books and has endorsed a bunch of books, he has a ton of stuff out on youtube and blogs.  I think he surfaces alot of interesting ideas, some very useful, some useful, and some decidedly not useful.  I am going to mix in a little criticism because I think there could be a little more science in our field and it should never be good enough to say, “This is a good idea because some big name person said so”.
-
-Dependency Inversion
+Credit for the acronym goes to Uncle Bob Martin who is not my uncle or probably yours either, but he is a big name in the land of Agile and particularly the subset which is Code Craftsmanship.
+He has a bunch of books and has endorsed a bunch of books, he has a ton of stuff out on youtube and blogs.
+Even though Uncle Bob Martin is a big name and has contributed alot, we still need to be critical, there is room for a good bit more science in our field and it should never be good enough to say “This is a good idea because some big name person said so”.
