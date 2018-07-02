@@ -37,4 +37,3 @@ There are a few different techniques depending on the shape of the dependency gr
 A simple shape would be if the dependency is already passed in through the constructor, replace it with an interface.
 Put the interface and the class that uses it together in a package perhaps called core, put the implementations elsewhere, and finally, a new class will need to be introduced to wire everything together.
 Dependency inversion always requires some form of container that assembles everything, that can be a DI framework or simply a class that news up all the things.
-It is a little more tricky but possible to invert a dependency so that a caller has to fulfill a contract defined in core.
