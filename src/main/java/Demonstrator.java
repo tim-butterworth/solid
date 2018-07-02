@@ -3,7 +3,6 @@ import solidPrinciples.D.dependencyInversion.containers.DifferentImplementationS
 import solidPrinciples.D.dependencyInversion.containers.InMemoryShoppingCartFactory;
 import solidPrinciples.I.InterfaceSegregation.shoppingCartExample.FullyFeaturedWarehouse;
 import solidPrinciples.I.InterfaceSegregation.shoppingCartExample.InterfaceSegregationShoppingCart;
-import solidPrinciples.O.openClosed.justRight.*;
 import solidPrinciples.L.liskovSubstitution.shoppingCartExample.*;
 import solidPrinciples.O.openClosed.justRight.*;
 import solidPrinciples.S.singleResponsibility.SingleResponsibilityShoppingCart;
